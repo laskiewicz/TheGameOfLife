@@ -4,7 +4,7 @@
   <a href="https://github.com/laskiewicz/TheGameOfLife/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
   </a>
-  <a href="https://github.com/laskiewicz/TheGameOfLife/">
+  <a href="https://github.com/laskiewicz/TheGameOfLife/blob/master/WPFTheGameOfLife/publish/setup.exe?raw=true">
     <img alt="Download Here" src="https://img.shields.io/badge/download-here-blue?logo=elixir" target="_blank" />
   </a>
   
