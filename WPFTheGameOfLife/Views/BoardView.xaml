@@ -10,13 +10,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="10,10,10,10" VerticalAlignment="Top" Orientation="Vertical" Grid.Column="0">
+        <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Orientation="Vertical">
             <Button Content="Start" Command="{Binding StartSimulationCommand}" FontWeight="Bold" />
             <Button Content="Stop" Margin="0,10,0,0" Command="{Binding StopSimulationCommand}" FontWeight="Bold" />
             <Button Content="One Step" Margin="0,10,0,0" Command="{Binding SimulationStepCommand}" />
@@ -28,8 +29,12 @@
             <Label Content="{Binding Path=AliveCellsCount, FallbackValue=0}" ContentStringFormat="Number of living cells: {0}" Margin="0,20,0,0" />
             <Label Content="{Binding Path=Generation, FallbackValue=0}" ContentStringFormat="Generation: {0}" />
         </StackPanel>
-        <Label Grid.Column="0" Grid.Row="1" Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" VerticalAlignment="Bottom" />
-        <ItemsControl Margin="10,10,10,10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Margin="10,50,10,10" Style="{StaticResource Tips}" TextWrapping="WrapWithOverflow">How to start: <LineBreak/> Hold left-click and drag on board to make cells alive <LineBreak/> Hold right-click kill cells</TextBlock>
+        
+        <Label Grid.Column="0" Grid.Row="2" Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" VerticalAlignment="Bottom" />
+        
+        <ItemsControl Margin="10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">
