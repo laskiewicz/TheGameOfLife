@@ -20,6 +20,8 @@ namespace WPFTheGameOfLife
         {
             containerRegistry.RegisterSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
             containerRegistry.RegisterSingleton<GameLogic>();
+            containerRegistry.RegisterForNavigation<BoardView>();
+            containerRegistry.RegisterForNavigation<SplashView>();
         }
     }
 }

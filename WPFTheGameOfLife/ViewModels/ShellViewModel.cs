@@ -8,7 +8,7 @@ namespace WPFTheGameOfLife.ViewModels
     {
         public ShellViewModel(IRegionManager regionManager)
         {
-            regionManager.RegisterViewWithRegion("BoardRegion", typeof(BoardView));
+            regionManager.RegisterViewWithRegion("BoardRegion", typeof(SplashView));
         }
     }
 }

@@ -30,8 +30,6 @@
             <Label Content="{Binding Path=Generation, FallbackValue=0}" ContentStringFormat="Generation: {0}" />
         </StackPanel>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" Margin="10,50,10,10" Style="{StaticResource Tips}" TextWrapping="WrapWithOverflow">How to start: <LineBreak/> Hold left-click and drag on board to make cells alive <LineBreak/> Hold right-click kill cells</TextBlock>
-        
         <Label Grid.Column="0" Grid.Row="2" Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" VerticalAlignment="Bottom" />
         
         <ItemsControl Margin="10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
