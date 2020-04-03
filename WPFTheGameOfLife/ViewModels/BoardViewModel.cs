@@ -1,10 +1,10 @@
 ﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Deployment.Application;
-using System.Windows;
 using System.Windows.Input;
 using WPFTheGameOfLife.Events;
 using WPFTheGameOfLife.GameOfLife;
@@ -22,12 +22,14 @@ namespace WPFTheGameOfLife.ViewModels
         private double _simulationSpeed = 250;
         private string _currentVersion;
         private GameLogic _gameLogic;
+        private readonly IRegionManager _regionManager;
 
         public ObservableCollection<List<Cell>> CellItems { get; set; }
-        public DelegateCommand StartSimulationCommand { get; set; }
-        public DelegateCommand StopSimulationCommand { get; set; }
-        public DelegateCommand ResetBoardCommand { get; set; }
-        public DelegateCommand SimulationStepCommand { get; set; }
+        public DelegateCommand StartSimulationCommand { get; private set; }
+        public DelegateCommand StopSimulationCommand { get; private set; }
+        public DelegateCommand ResetBoardCommand { get; private set; }
+        public DelegateCommand SimulationStepCommand { get; private set; }
+        public DelegateCommand GoToHelpCommand { get; private set; }
 
         public int AliveCellsCount
         {
@@ -76,14 +78,16 @@ namespace WPFTheGameOfLife.ViewModels
         }
         public bool StopButtonIsEnabled => !_startButtonIsEnabled;
 
-        public BoardViewModel(GameLogic gameLogic, IEventAggregator eventAggregator)
+        public BoardViewModel(GameLogic gameLogic, IEventAggregator eventAggregator, IRegionManager regionManager)
         {
             _gameLogic = gameLogic;
+            _regionManager = regionManager;
             eventAggregator.GetEvent<StateOfBoardChangedEvent>().Subscribe(GetGameLogicEvent);
             StartSimulationCommand = new DelegateCommand(StartSimulation).ObservesCanExecute(() => StartButtonIsEnabled);
             StopSimulationCommand = new DelegateCommand(StopSimulation).ObservesCanExecute(() => StopButtonIsEnabled);
             ResetBoardCommand = new DelegateCommand(ResetBoard);
             SimulationStepCommand = new DelegateCommand(SimulationOneStep);
+            GoToHelpCommand = new DelegateCommand(GoToHelp);
 
             _gameLogic.SetDispatcherTimerInterval(_simulationSpeed);
             CellItems = gameLogic.DrawBoard(CellsArraySize, CellSize);
@@ -112,6 +116,10 @@ namespace WPFTheGameOfLife.ViewModels
         {
             StopSimulation();
             _gameLogic.ResetBoard();
+        }
+        private void GoToHelp()
+        {
+            _regionManager.RequestNavigate("BoardRegion", "SplashView");
         }
         public void CellMouseEvents(object sender, MouseEventArgs e)
         {

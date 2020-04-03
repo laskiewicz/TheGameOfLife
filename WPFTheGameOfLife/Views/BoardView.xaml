@@ -6,7 +6,9 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        mc:Ignorable="d" Background="White">
+        mc:Ignorable="d"
+        d:DesignHeight="500" d:DesignWidth="500"
+        Background="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -17,10 +19,10 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Orientation="Vertical">
-            <Button Content="Start" Command="{Binding StartSimulationCommand}" FontWeight="Bold" />
-            <Button Content="Stop" Margin="0,10,0,0" Command="{Binding StopSimulationCommand}" FontWeight="Bold" />
-            <Button Content="One Step" Margin="0,10,0,0" Command="{Binding SimulationStepCommand}" />
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="10" VerticalAlignment="Top" Orientation="Vertical">
+            <Button Content="▶ Start" Command="{Binding StartSimulationCommand}" FontWeight="Bold" />
+            <Button Content="⏹ Stop" Margin="0,10,0,0" Command="{Binding StopSimulationCommand}" FontWeight="Bold" />
+            <Button Content="One Step" Margin="0,20,0,0" Command="{Binding SimulationStepCommand}" />
             <Button x:Name="ResetBoard" Margin="0,5,0,0" Content="Reset Board" Command="{Binding ResetBoardCommand}" />
 
             <Label Content="{Binding ElementName=simulationSpeed, Path=Value, UpdateSourceTrigger=PropertyChanged}" ContentStringFormat="Simulation interval: {0}ms" Margin="0,10,0,0" />
@@ -29,8 +31,10 @@
             <Label Content="{Binding Path=AliveCellsCount, FallbackValue=0}" ContentStringFormat="Number of living cells: {0}" Margin="0,20,0,0" />
             <Label Content="{Binding Path=Generation, FallbackValue=0}" ContentStringFormat="Generation: {0}" />
         </StackPanel>
-
-        <Label Grid.Column="0" Grid.Row="2" Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" VerticalAlignment="Bottom" />
+        <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom">
+            <Button Margin="5 0 75 0" Content="❓ Help" Command="{Binding GoToHelpCommand}" FontSize="10" />
+            <Label Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" />
+        </StackPanel>
         
         <ItemsControl Margin="10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
             <ItemsControl.ItemTemplate>
