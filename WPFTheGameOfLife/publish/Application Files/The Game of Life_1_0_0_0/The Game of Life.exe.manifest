@@ -43,110 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommonServiceLocator.dll" size="9216">
-      <assemblyIdentity name="CommonServiceLocator" version="2.0.5.0" publicKeyToken="489B6ACCFAF20EF0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MvZwHGQxcknfjpXf3/A3ifLCv0EkuHaVWP8mJMVqUEs=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DryIoc.dll" size="381952">
-      <assemblyIdentity name="DryIoc" version="4.0.7.0" publicKeyToken="DFBF2BD50FCF7768" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TR/G8NzO40RtcIxVrCoyWc8TY2TYYIOf3mKrKeNiHF8=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Xaml.Behaviors.dll" size="144768">
-      <assemblyIdentity name="Microsoft.Xaml.Behaviors" version="1.1.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/3WTj+3uWWcGFxkW23Y6wQC8cWSnNG3XOa1hZg4Gi1o=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Prism.dll" size="76712">
-      <assemblyIdentity name="Prism" version="7.2.0.1422" publicKeyToken="40EE6C3A2184DC59" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jGNdafix6b6mlA0PH99aZgS+hTIBjZcSzeDfE4nSOow=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Prism.DryIoc.Wpf.dll" size="28584">
-      <assemblyIdentity name="Prism.DryIoc.Wpf" version="7.2.0.1422" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PfAqH54rUfgKE3xKKsoSze6ZQvaMoSsAXo/Y7XTndRE=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Prism.Wpf.dll" size="147368">
-      <assemblyIdentity name="Prism.Wpf" version="7.2.0.1422" publicKeyToken="40EE6C3A2184DC59" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>OYSaWtlsL1JMZT5COkZqrBQS1GLxinxSZJVrI8f1fQE=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.ValueTuple.dll" size="25232">
-      <assemblyIdentity name="System.ValueTuple" version="4.0.3.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6QXRAlhbIsbfBPIZr1y9v6e8Fll56XiLYt9tzBZeEPQ=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Windows.Interactivity.dll" size="55904">
-      <assemblyIdentity name="System.Windows.Interactivity" version="4.5.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>k/vFnkiAr8nxNsOsCXatp/P6p8rO3OXIJLM3y8qdLr8=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="The Game of Life.exe" size="70600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="The Game of Life.exe" size="594888">
       <assemblyIdentity name="The Game of Life" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9oOrrHNykpENE2q7nGPIlqcrj47+q0Ns3q0fUNi7FUM=</dsig:DigestValue>
+        <dsig:DigestValue>jsVX88uZ46FPwiR6ixISI5PCQxIEOgCy61A8T/56d0Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -159,13 +63,13 @@
       <dsig:DigestValue>vHFJb5CLbDTAuFVkK08LdzxMoS376cN9nS4J6I1xbyY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="The Game of Life.exe.config" size="535">
+  <file name="The Game of Life.exe.config" size="549">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>bvNpY5iHs/s0CwJ2nhkp/zb44CYIdV/pKYHSDZIVdUg=</dsig:DigestValue>
+      <dsig:DigestValue>JbN76eiB+jA8GkWiOKhctdare73+dnBiUl9qho/0XYI=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=DESKTOP-ZIG\laski" issuerKeyHash="1248842a719f3244acc85e81099dcd1fc41f5e17" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Ay5X8sznkr4vItuSqX8JkI+4aD9sGyVI9Kz4Klc1XHY=</DigestValue></Reference></SignedInfo><SignatureValue>liXmt4QWpONfC1ff8jqT1IOcuzFx+oDU2+A7pxQnbeVRyEzgz65utbb3IU+6H17xslFap8vZR4GaycNHfkm5fIljh/jlGiwQfhzalRzWTu2CnsVI1uXBbcXTTjqoyNpsfh240ezKV8NR6xYo3j2kfRNRdVPLh72g4xYa+FidMvs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yQlelDy7uBvE3TlMgU6Z/Cf6RmGUsIoFP/0OJikxhMXLAvAVpl6ELtwPpTGVfw65xEy/rd+ixk1Lp7Avrha9FyLamMf77NM/AvRJh9uPMBnkuhiHmPf3UPId0OX4tzK6n37GuLP1ow1BbNrnr2BL/c0a++3ba6obuAVRl3ou7RE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="765c35572af8acf448251b6c3f68b88f90097fa992db222fbe92e7ccf2572e03" Description="" Url=""><as:assemblyIdentity name="The Game of Life.exe" version="1.0.0.0" publicKeyToken="b5cf2279eea36279" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-ZIG\laski</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>qREv5RWoSEmVC2NtPfY7QXuStA1I7h33FcErRIVRm0w=</DigestValue></Reference></SignedInfo><SignatureValue>L1aeKYM3bcnicjo0sA/Oh69kHBWb8EtetDgldmyP8UmhGT436HA7TIV+/o3GKy51ARHCI9OTrYlcoQD30nTKhR6kkFNHx6Xgsjo0SjckCyS/fVClraJjn0TbQpfWtpVsL4tCZG//R+gsNFrVeCP+PTB6710On5j+CeYo5A/LCZs=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yQlelDy7uBvE3TlMgU6Z/Cf6RmGUsIoFP/0OJikxhMXLAvAVpl6ELtwPpTGVfw65xEy/rd+ixk1Lp7Avrha9FyLamMf77NM/AvRJh9uPMBnkuhiHmPf3UPId0OX4tzK6n37GuLP1ow1BbNrnr2BL/c0a++3ba6obuAVRl3ou7RE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB3TCCAUagAwIBAgIQR9N0TmDMxZdJ/KLpM4XHFzANBgkqhkiG9w0BAQsFADAtMSswKQYDVQQDHiIARABFAFMASwBUAE8AUAAtAFoASQBHAFwAbABhAHMAawBpMB4XDTIwMDMyNzE5NTMyMloXDTIxMDMyODAxNTMyMlowLTErMCkGA1UEAx4iAEQARQBTAEsAVABPAFAALQBaAEkARwBcAGwAYQBzAGsAaTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAyQlelDy7uBvE3TlMgU6Z/Cf6RmGUsIoFP/0OJikxhMXLAvAVpl6ELtwPpTGVfw65xEy/rd+ixk1Lp7Avrha9FyLamMf77NM/AvRJh9uPMBnkuhiHmPf3UPId0OX4tzK6n37GuLP1ow1BbNrnr2BL/c0a++3ba6obuAVRl3ou7RECAwEAATANBgkqhkiG9w0BAQsFAAOBgQCMWharQFtq0N7pHP5MSOnoUCAH0I4nT4bDJv58XpZ8FFWS1VKWuXb3JLkLvHN9j3nI6SP0C/NGHvrOSLVL4cgapsHzyWl9zW+NKHWz4n268MEr3/3v6AX+KqXf6o54Zqj7BynwFeaD63tloB52JJJp4YF6IeEVyBKwXkvfkF7juQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=DESKTOP-ZIG\laski" issuerKeyHash="1248842a719f3244acc85e81099dcd1fc41f5e17" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>TS8UpQO1APdgBLmd97CYF7uXFrlyX0ZOyRGe4eQKC4A=</DigestValue></Reference></SignedInfo><SignatureValue>dJEnUtQriETCyDbdESyBTGvUY2jdWlmZWVj3OG77xq9u/h36BV1WkFXprJih1pELQVsInekMcMNOTButMWSP1X8B+4mBnruYa1vFbYSdlAEojmUiV1cNuVyCdRyqnYXcvT8OprMvKREUKHchr5XWOdfNOFW7nVSNVAQIiVwuxZI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yQlelDy7uBvE3TlMgU6Z/Cf6RmGUsIoFP/0OJikxhMXLAvAVpl6ELtwPpTGVfw65xEy/rd+ixk1Lp7Avrha9FyLamMf77NM/AvRJh9uPMBnkuhiHmPf3UPId0OX4tzK6n37GuLP1ow1BbNrnr2BL/c0a++3ba6obuAVRl3ou7RE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="800b0ae4e19e11c94e465f72b91697bb1798b0f79db90460f700b503a5142f4d" Description="" Url=""><as:assemblyIdentity name="The Game of Life.exe" version="1.0.0.0" publicKeyToken="b5cf2279eea36279" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-ZIG\laski</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>dx2XZe3iwtpieX3Rbpx4Fz+sBvCwiqPtPjbXoGx3dJ8=</DigestValue></Reference></SignedInfo><SignatureValue>QSl3+2wruFlmdSUyksDOwkLmWU2pKa+GTavw3zvW0BhGb6gVJO9zFWOOlEoOFf+A9IpbkjjuZ+3dRtsaF9Mx/SmMsNoEwtZR4nW8Mx5tlElt6cNrE9LTJWQsKBmQidDgqSNT33yEtldcfEjAAe2rZsPDi8bdQeU//d9rCz5m7mo=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yQlelDy7uBvE3TlMgU6Z/Cf6RmGUsIoFP/0OJikxhMXLAvAVpl6ELtwPpTGVfw65xEy/rd+ixk1Lp7Avrha9FyLamMf77NM/AvRJh9uPMBnkuhiHmPf3UPId0OX4tzK6n37GuLP1ow1BbNrnr2BL/c0a++3ba6obuAVRl3ou7RE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB3TCCAUagAwIBAgIQR9N0TmDMxZdJ/KLpM4XHFzANBgkqhkiG9w0BAQsFADAtMSswKQYDVQQDHiIARABFAFMASwBUAE8AUAAtAFoASQBHAFwAbABhAHMAawBpMB4XDTIwMDMyNzE5NTMyMloXDTIxMDMyODAxNTMyMlowLTErMCkGA1UEAx4iAEQARQBTAEsAVABPAFAALQBaAEkARwBcAGwAYQBzAGsAaTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAyQlelDy7uBvE3TlMgU6Z/Cf6RmGUsIoFP/0OJikxhMXLAvAVpl6ELtwPpTGVfw65xEy/rd+ixk1Lp7Avrha9FyLamMf77NM/AvRJh9uPMBnkuhiHmPf3UPId0OX4tzK6n37GuLP1ow1BbNrnr2BL/c0a++3ba6obuAVRl3ou7RECAwEAATANBgkqhkiG9w0BAQsFAAOBgQCMWharQFtq0N7pHP5MSOnoUCAH0I4nT4bDJv58XpZ8FFWS1VKWuXb3JLkLvHN9j3nI6SP0C/NGHvrOSLVL4cgapsHzyWl9zW+NKHWz4n268MEr3/3v6AX+KqXf6o54Zqj7BynwFeaD63tloB52JJJp4YF6IeEVyBKwXkvfkF7juQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
