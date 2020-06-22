@@ -4,7 +4,6 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Deployment.Application;
 using System.Windows.Input;
 using WPFTheGameOfLife.Events;
 using WPFTheGameOfLife.GameOfLife;
@@ -48,7 +47,7 @@ namespace WPFTheGameOfLife.ViewModels
             {
                 try
                 {
-                    _currentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+                    // _currentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
                 }
                 catch
                 {
