@@ -11,6 +11,7 @@
     <FileVersion>1.1.0.0</FileVersion>
     <Version>1.1</Version>
     <Authors>laskiewicz</Authors>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   
   <ItemGroup>
@@ -25,20 +26,5 @@
       <Version>7.2.0.1422</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 </Project>

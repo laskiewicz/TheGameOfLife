@@ -47,7 +47,7 @@ namespace WPFTheGameOfLife.ViewModels
             {
                 try
                 {
-                    // _currentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+                    // TODO: port to .Net Core _currentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
                 }
                 catch
                 {
