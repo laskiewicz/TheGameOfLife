@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTheGameOfLife", "WPFTheGameOfLife\WPFTheGameOfLife.csproj", "{01D2AE17-44E0-4E15-8CE8-F006EEDC1920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFTheGameOfLife", "WPFTheGameOfLife\WPFTheGameOfLife.csproj", "{01D2AE17-44E0-4E15-8CE8-F006EEDC1920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGameOfLife.Tests", "TheGameOfLife.Tests\TheGameOfLife.Tests.csproj", "{E4163FBF-857B-4C0C-B844-757C53D7A764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGameOfLife.Tests", "TheGameOfLife.Tests\TheGameOfLife.Tests.csproj", "{E4163FBF-857B-4C0C-B844-757C53D7A764}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CE71324-B13D-458B-B06B-7F48A44FEAA1}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-core-publish.yml = .github\workflows\dotnet-core-publish.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
