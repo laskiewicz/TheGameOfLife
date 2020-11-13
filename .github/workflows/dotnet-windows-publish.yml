@@ -1,10 +1,9 @@
-name: .NET Windows Publish
+name: .NET Windows Publish tag v*
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -31,7 +30,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        release_name: The Game Of Life Release
+        tag_name: ${{ github.ref }}
+        release_name: The Game Of Life ${{ github.ref }}
         draft: false
         prerelease: false
     - name: Upload Release Asset

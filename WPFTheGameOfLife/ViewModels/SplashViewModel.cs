@@ -6,6 +6,23 @@ namespace WPFTheGameOfLife.ViewModels
 {
     public class SplashViewModel : BindableBase
     {
+        public string CurrentVersion
+        {
+            get
+            {
+                try
+                {
+                    return GetType().Assembly.GetName().Version.ToString();
+                }
+                catch
+                {
+                    _currentVersion = "Debug";
+                }
+                return _currentVersion;
+            }
+        }
+
+        private string _currentVersion;
         private readonly IRegionManager _regionManager;
 
         public DelegateCommand StartAplicationCommand { get; private set; }

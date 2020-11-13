@@ -24,5 +24,6 @@
             </TextBlock>
             <Button Margin="50,20" Height="50" Content="Start Aplication" Command="{Binding StartAplicationCommand}" FontWeight="ExtraBold" FontSize="20" />
         </StackPanel>
+        <Label Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
     </Grid>
 </UserControl>

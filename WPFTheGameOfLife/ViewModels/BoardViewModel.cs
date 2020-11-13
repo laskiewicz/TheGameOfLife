@@ -20,7 +20,7 @@ namespace WPFTheGameOfLife.ViewModels
         private const int CellSize = 10;
         private double _simulationSpeed = 250;
         private string _currentVersion;
-        private GameLogic _gameLogic;
+        private readonly GameLogic _gameLogic;
         private readonly IRegionManager _regionManager;
 
         public ObservableCollection<List<Cell>> CellItems { get; set; }
@@ -47,7 +47,7 @@ namespace WPFTheGameOfLife.ViewModels
             {
                 try
                 {
-                    // TODO: port to .Net Core _currentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+                    return GetType().Assembly.GetName().Version.ToString();
                 }
                 catch
                 {
