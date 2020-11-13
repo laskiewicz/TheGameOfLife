@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>TheGameOfLife</AssemblyName>
     <ApplicationIcon>GameOfLifeIcon.ico</ApplicationIcon>
@@ -13,7 +13,6 @@
     <Authors>laskiewicz</Authors>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
-  
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator">
       <Version>2.0.5</Version>
@@ -21,10 +20,10 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.19</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Core" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
     <PackageReference Include="Prism.DryIoc">
-      <Version>7.2.0.1422</Version>
+      <Version>8.0.0.1909</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
 </Project>
