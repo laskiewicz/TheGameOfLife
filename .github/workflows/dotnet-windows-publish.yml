@@ -31,8 +31,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        release_name: The Game Of Life Release
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -42,6 +41,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: WPFTheGameOfLife/bin/Release/netcoreapp3.1/win-x64/publish/TheGameOfLife.exe
+        asset_path: WPFTheGameOfLife/bin/Release/net5.0-windows/publish/TheGameOfLife.exe
         asset_name: TheGameOfLife.exe
         asset_content_type: application/exe
