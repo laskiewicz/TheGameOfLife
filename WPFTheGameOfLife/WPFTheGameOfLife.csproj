@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>TheGameOfLife</AssemblyName>
     <ApplicationIcon>GameOfLifeIcon.ico</ApplicationIcon>
@@ -15,15 +15,12 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.5</Version>
+      <Version>2.0.6</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview4" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.31</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
-    <PackageReference Include="Prism.DryIoc">
-      <Version>8.0.0.1909</Version>
-    </PackageReference>
-    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
 </Project>

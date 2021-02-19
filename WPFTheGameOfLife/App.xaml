@@ -1,12 +1,12 @@
-﻿<prism:PrismApplication x:Class="WPFTheGameOfLife.App"
+﻿<Application x:Class="WPFTheGameOfLife.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/">
-    <prism:PrismApplication.Resources>
+             StartupUri="Views/ShellView.xaml">
+    <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="DefaultTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </prism:PrismApplication.Resources>
-</prism:PrismApplication>
+    </Application.Resources>
+</Application>

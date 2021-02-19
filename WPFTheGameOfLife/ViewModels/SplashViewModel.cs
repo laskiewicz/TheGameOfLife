@@ -1,11 +1,19 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Regions;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Input;
+using WPFTheGameOfLife.Views;
 
 namespace WPFTheGameOfLife.ViewModels
 {
-    public class SplashViewModel : BindableBase
+    public class SplashViewModel : ObservableObject
     {
+        public SplashViewModel()// ShellViewModel shellViewModel)
+        {
+           // _shellViewModel = shellViewModel;
+            StartAplicationCommand = new RelayCommand(StartAplication);
+        }
+
         public string CurrentVersion
         {
             get
@@ -23,18 +31,14 @@ namespace WPFTheGameOfLife.ViewModels
         }
 
         private string _currentVersion;
-        private readonly IRegionManager _regionManager;
+        //private ShellViewModel _shellViewModel;
+        public ICommand StartAplicationCommand { get; private set; }
 
-        public DelegateCommand StartAplicationCommand { get; private set; }
-        public SplashViewModel(IRegionManager regionManager)
-        {
-            _regionManager = regionManager;
-            StartAplicationCommand = new DelegateCommand(StartAplication);
-        }
 
         private void StartAplication()
         {
-            _regionManager.RequestNavigate("BoardRegion", "BoardView");
+            App.Current.Services.GetService<ShellViewModel>().CurrentPage =
+                App.Current.Services.GetService<BoardView>();
         }
     }
 }

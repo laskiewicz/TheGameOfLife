@@ -1,9 +1,9 @@
 ﻿using System.Windows.Media;
-using Prism.Mvvm;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace WPFTheGameOfLife.Models
 {
-    public class Cell : BindableBase
+    public class Cell: ObservableObject
     {
         public bool isAlive{ get; set; }
         public bool willBeAlive{ get; set; }
@@ -15,8 +15,8 @@ namespace WPFTheGameOfLife.Models
         private Brush _fill;
         public Brush Fill
         {
-            get { return _fill; }
-            set { SetProperty(ref _fill, value); }
+            get => _fill;
+            set => SetProperty(ref _fill, value);
         }
     }
 }

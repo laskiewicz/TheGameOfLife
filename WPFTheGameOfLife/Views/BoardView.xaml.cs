@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using WPFTheGameOfLife.ViewModels;
 
 namespace WPFTheGameOfLife.Views
 {
@@ -7,9 +8,10 @@ namespace WPFTheGameOfLife.Views
     /// </summary>
     public partial class BoardView : UserControl
     {
-        public BoardView()
+        public BoardView(BoardViewModel boardViewModel)
         {
             InitializeComponent();
+            DataContext = boardViewModel;
         }
     }
 }

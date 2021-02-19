@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using WPFTheGameOfLife.ViewModels;
 
 namespace WPFTheGameOfLife.Views
 {
@@ -7,9 +8,10 @@ namespace WPFTheGameOfLife.Views
     /// </summary>
     public partial class SplashView : UserControl
     {
-        public SplashView()
+        public SplashView(SplashViewModel splashViewModel)
         {
             InitializeComponent();
+            DataContext = splashViewModel;
         }
     }
 }

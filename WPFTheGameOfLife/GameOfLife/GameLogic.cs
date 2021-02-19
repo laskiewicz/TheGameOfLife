@@ -1,5 +1,4 @@
-﻿using Prism.Events;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -14,13 +13,13 @@ namespace WPFTheGameOfLife.GameOfLife
         private int _aliveCellsCount;
         private int _generation;
         private IDispatcherTimerAdapter _dispatcherTimerAdapter;
-        private IEventAggregator _eventAggregator;
+        // private IEventAggregator _eventAggregator;
         public ObservableCollection<List<Cell>> CellItems;
 
-        public GameLogic(IEventAggregator eventAggregator, IDispatcherTimerAdapter dispatcherTimerAdapter)
+        public GameLogic(IDispatcherTimerAdapter dispatcherTimerAdapter) // IEventAggregator eventAggregator
         {
             _dispatcherTimerAdapter = dispatcherTimerAdapter;
-            _eventAggregator = eventAggregator;
+            // _eventAggregator = eventAggregator;
             _dispatcherTimerAdapter?.SetTask(DispatcherTimer_Tick);
         }
 
@@ -52,7 +51,7 @@ namespace WPFTheGameOfLife.GameOfLife
                 cell.isAlive = false;
             }
             UpdateAliveCellsCount();
-            _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = _aliveCellsCount, Generation = _generation });
+            // _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = _aliveCellsCount, Generation = _generation });
         }
         public ObservableCollection<List<Cell>> DrawBoard(int cllsArraySize, int cellSize)
         {
@@ -90,7 +89,7 @@ namespace WPFTheGameOfLife.GameOfLife
                 }
             }
             _generation = 0;
-            _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = 0, Generation = 0 });
+            // _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = 0, Generation = 0 });
         }
 
         public void SimulationOneStep()
@@ -103,7 +102,7 @@ namespace WPFTheGameOfLife.GameOfLife
             _generation++;
             SimulationStep();
             UpdateAliveCellsCount();
-            _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = _aliveCellsCount, Generation = _generation });
+            // _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = _aliveCellsCount, Generation = _generation });
         }
         private void SimulationStep()
         {
@@ -126,7 +125,7 @@ namespace WPFTheGameOfLife.GameOfLife
                                 .isAlive ? 1 : 0;
                         }
                     }
-                    //Rules in game of life, checking if cell will be alive in next generation
+                    // Rules in game of life, checking if cell will be alive in next generation
                     if (!CellItems[i][j].isAlive && neighbours == 3)
                         CellItems[i][j].willBeAlive = true;
                     else if (CellItems[i][j].isAlive && (neighbours == 3 || neighbours == 2))

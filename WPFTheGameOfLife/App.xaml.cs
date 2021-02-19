@@ -1,27 +1,42 @@
-﻿using WPFTheGameOfLife.Views;
-using Prism.Ioc;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows;
 using WPFTheGameOfLife.GameOfLife;
-using Prism.DryIoc;
+using WPFTheGameOfLife.ViewModels;
+using WPFTheGameOfLife.Views;
 
 namespace WPFTheGameOfLife
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication
-    { 
-        protected override Window CreateShell()
+    public partial class App : Application
+    {
+        public new static App Current => (App)Application.Current;
+        public IServiceProvider Services { get; }
+        public App()
         {
-            return Container.Resolve<ShellView>();
+            Services = ConfigureServices();
+
+            this.InitializeComponent();
         }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        private static IServiceProvider ConfigureServices()
         {
-            containerRegistry.RegisterSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
-            containerRegistry.RegisterSingleton<GameLogic>();
-            containerRegistry.RegisterForNavigation<BoardView>();
-            containerRegistry.RegisterForNavigation<SplashView>();
+            var services = new ServiceCollection();
+
+            services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
+            services.AddSingleton<GameLogic>();
+
+            services.AddTransient<ShellViewModel>();
+
+            services.AddTransient<SplashView>();
+            services.AddTransient<SplashViewModel>();
+
+            services.AddTransient<BoardView>();
+            services.AddTransient<BoardViewModel>();
+
+            return services.BuildServiceProvider();
         }
     }
 }

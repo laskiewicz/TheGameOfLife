@@ -1,7 +1,5 @@
-﻿using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
-using Prism.Regions;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -11,7 +9,7 @@ using WPFTheGameOfLife.Models;
 
 namespace WPFTheGameOfLife.ViewModels
 {
-    public class BoardViewModel : BindableBase
+    public class BoardViewModel : ObservableObject
     {
         private bool _startButtonIsEnabled = true;
         private int _aliveCellsCount;
@@ -21,14 +19,13 @@ namespace WPFTheGameOfLife.ViewModels
         private double _simulationSpeed = 250;
         private string _currentVersion;
         private readonly GameLogic _gameLogic;
-        private readonly IRegionManager _regionManager;
 
         public ObservableCollection<List<Cell>> CellItems { get; set; }
-        public DelegateCommand StartSimulationCommand { get; private set; }
-        public DelegateCommand StopSimulationCommand { get; private set; }
-        public DelegateCommand ResetBoardCommand { get; private set; }
-        public DelegateCommand SimulationStepCommand { get; private set; }
-        public DelegateCommand GoToHelpCommand { get; private set; }
+        public ICommand StartSimulationCommand { get; private set; }
+        public ICommand StopSimulationCommand { get; private set; }
+        public ICommand ResetBoardCommand { get; private set; }
+        public ICommand SimulationStepCommand { get; private set; }
+        public ICommand GoToHelpCommand { get; private set; }
 
         public int AliveCellsCount
         {
@@ -72,21 +69,21 @@ namespace WPFTheGameOfLife.ViewModels
             set
             {
                 SetProperty(ref _startButtonIsEnabled, value);
-                RaisePropertyChanged("StopButtonIsEnabled");
+                OnPropertyChanged(nameof(StopButtonIsEnabled));
             }
         }
         public bool StopButtonIsEnabled => !_startButtonIsEnabled;
 
-        public BoardViewModel(GameLogic gameLogic, IEventAggregator eventAggregator, IRegionManager regionManager)
+        public BoardViewModel(GameLogic gameLogic) //, IEventAggregator eventAggregator, IRegionManager regionManager)
         {
             _gameLogic = gameLogic;
-            _regionManager = regionManager;
-            eventAggregator.GetEvent<StateOfBoardChangedEvent>().Subscribe(GetGameLogicEvent);
-            StartSimulationCommand = new DelegateCommand(StartSimulation).ObservesCanExecute(() => StartButtonIsEnabled);
-            StopSimulationCommand = new DelegateCommand(StopSimulation).ObservesCanExecute(() => StopButtonIsEnabled);
-            ResetBoardCommand = new DelegateCommand(ResetBoard);
-            SimulationStepCommand = new DelegateCommand(SimulationOneStep);
-            GoToHelpCommand = new DelegateCommand(GoToHelp);
+            // _regionManager = regionManager;
+            // eventAggregator.GetEvent<StateOfBoardChangedEvent>().Subscribe(GetGameLogicEvent);
+            StartSimulationCommand = new RelayCommand(StartSimulation, () => StartButtonIsEnabled);
+            StopSimulationCommand = new RelayCommand(StopSimulation, () => StopButtonIsEnabled);
+            ResetBoardCommand = new RelayCommand(ResetBoard);
+            SimulationStepCommand = new RelayCommand(SimulationOneStep);
+            GoToHelpCommand = new RelayCommand(GoToHelp);
 
             _gameLogic.SetDispatcherTimerInterval(_simulationSpeed);
             CellItems = gameLogic.DrawBoard(CellsArraySize, CellSize);
@@ -118,7 +115,7 @@ namespace WPFTheGameOfLife.ViewModels
         }
         private void GoToHelp()
         {
-            _regionManager.RequestNavigate("BoardRegion", "SplashView");
+            // _regionManager.RequestNavigate("BoardRegion", "SplashView");
         }
         public void CellMouseEvents(object sender, MouseEventArgs e)
         {
