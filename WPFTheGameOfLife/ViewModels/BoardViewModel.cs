@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -21,11 +22,11 @@ namespace WPFTheGameOfLife.ViewModels
         private readonly GameLogic _gameLogic;
 
         public ObservableCollection<List<Cell>> CellItems { get; set; }
-        public ICommand StartSimulationCommand { get; private set; }
-        public ICommand StopSimulationCommand { get; private set; }
-        public ICommand ResetBoardCommand { get; private set; }
-        public ICommand SimulationStepCommand { get; private set; }
-        public ICommand GoToHelpCommand { get; private set; }
+        public RelayCommand StartSimulationCommand { get; private set; }
+        public RelayCommand StopSimulationCommand { get; private set; }
+        public RelayCommand ResetBoardCommand { get; private set; }
+        public RelayCommand SimulationStepCommand { get; private set; }
+        public RelayCommand GoToHelpCommand { get; private set; }
 
         public int AliveCellsCount
         {
@@ -70,9 +71,11 @@ namespace WPFTheGameOfLife.ViewModels
             {
                 SetProperty(ref _startButtonIsEnabled, value);
                 OnPropertyChanged(nameof(StopButtonIsEnabled));
+                StartSimulationCommand.NotifyCanExecuteChanged();
+                StopSimulationCommand.NotifyCanExecuteChanged();
             }
         }
-        public bool StopButtonIsEnabled => !_startButtonIsEnabled;
+        public bool StopButtonIsEnabled => !StartButtonIsEnabled;
 
         public BoardViewModel(GameLogic gameLogic) //, IEventAggregator eventAggregator, IRegionManager regionManager)
         {
