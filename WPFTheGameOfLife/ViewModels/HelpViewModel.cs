@@ -36,7 +36,6 @@ namespace WPFTheGameOfLife.ViewModels
         {
             ShellView shell = App.Current.Services.GetService<ShellView>();
             shell.GetNavigationFrame().Navigate(App.Current.Services.GetService<BoardView>());
-            shell.GetNavigationFrame().ContextMenu = null;
         }
     }
 }
