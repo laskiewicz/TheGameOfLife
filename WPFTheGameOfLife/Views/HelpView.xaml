@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPFTheGameOfLife.Views.SplashView"
+﻿<Page x:Class="WPFTheGameOfLife.Views.HelpView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,4 +25,4 @@
         </StackPanel>
         <Label Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
     </Grid>
-</UserControl>
+</Page>

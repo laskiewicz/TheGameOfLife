@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using System.Windows.Controls;
 using WPFTheGameOfLife.ViewModels;
 
 namespace WPFTheGameOfLife.Views
@@ -13,6 +14,9 @@ namespace WPFTheGameOfLife.Views
         {
             InitializeComponent();
             DataContext = App.Current.Services.GetService<ShellViewModel>();
+            MainContentFrame.Navigate(App.Current.Services.GetService<HelpView>());
         }
+        public Frame GetNavigationFrame()
+            => MainContentFrame;
     }
 }

@@ -7,13 +7,13 @@ namespace WPFTheGameOfLife.ViewModels
 {
     public class ShellViewModel : ObservableRecipient
     {
-        private UserControl _currentpage;
-        public UserControl CurrentPage
+        private Page _currentpage;
+        public Page CurrentPage
         {
             get => _currentpage;
             set => SetProperty(ref _currentpage, value);
         }
-        public ShellViewModel(BoardView splashView)//IRegionManager regionManager)
+        public ShellViewModel(HelpView splashView)//IRegionManager regionManager)
         {
             CurrentPage = splashView;
         }

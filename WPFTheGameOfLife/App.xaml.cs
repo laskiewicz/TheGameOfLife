@@ -20,7 +20,11 @@ namespace WPFTheGameOfLife
 
             this.InitializeComponent();
         }
-
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            var shellView = App.Current.Services.GetService<ShellView>();
+            shellView.Show();
+        }
         private static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
@@ -28,13 +32,14 @@ namespace WPFTheGameOfLife
             services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
             services.AddSingleton<GameLogic>();
 
-            services.AddTransient<ShellViewModel>();
+            services.AddSingleton<ShellViewModel>();
+            services.AddSingleton<ShellView>();
 
-            services.AddTransient<SplashView>();
-            services.AddTransient<SplashViewModel>();
+            services.AddSingleton<HelpView>();
+            services.AddSingleton<HelpViewModel>();
 
-            services.AddTransient<BoardView>();
-            services.AddTransient<BoardViewModel>();
+            services.AddSingleton<BoardView>();
+            services.AddSingleton<BoardViewModel>();
 
             return services.BuildServiceProvider();
         }

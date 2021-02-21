@@ -6,7 +6,7 @@ namespace WPFTheGameOfLife.Views
     /// <summary>
     /// Interaction logic for BoardView.xaml
     /// </summary>
-    public partial class BoardView : UserControl
+    public partial class BoardView : Page
     {
         public BoardView(BoardViewModel boardViewModel)
         {

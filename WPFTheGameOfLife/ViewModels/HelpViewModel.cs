@@ -6,11 +6,10 @@ using WPFTheGameOfLife.Views;
 
 namespace WPFTheGameOfLife.ViewModels
 {
-    public class SplashViewModel : ObservableObject
+    public class HelpViewModel : ObservableObject
     {
-        public SplashViewModel()// ShellViewModel shellViewModel)
+        public HelpViewModel()
         {
-           // _shellViewModel = shellViewModel;
             StartAplicationCommand = new RelayCommand(StartAplication);
         }
 
@@ -31,14 +30,13 @@ namespace WPFTheGameOfLife.ViewModels
         }
 
         private string _currentVersion;
-        //private ShellViewModel _shellViewModel;
         public ICommand StartAplicationCommand { get; private set; }
-
 
         private void StartAplication()
         {
-            App.Current.Services.GetService<ShellViewModel>().CurrentPage =
-                App.Current.Services.GetService<BoardView>();
+            ShellView shell = App.Current.Services.GetService<ShellView>();
+            shell.GetNavigationFrame().Navigate(App.Current.Services.GetService<BoardView>());
+            shell.GetNavigationFrame().ContextMenu = null;
         }
     }
 }

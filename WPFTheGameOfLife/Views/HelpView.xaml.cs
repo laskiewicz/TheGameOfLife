@@ -6,12 +6,12 @@ namespace WPFTheGameOfLife.Views
     /// <summary>
     /// Interaction logic for SplashView.xaml
     /// </summary>
-    public partial class SplashView : UserControl
+    public partial class HelpView : Page
     {
-        public SplashView(SplashViewModel splashViewModel)
+        public HelpView(HelpViewModel helpViewModel)
         {
             InitializeComponent();
-            DataContext = splashViewModel;
+            DataContext = helpViewModel;
         }
     }
 }
