@@ -23,7 +23,4 @@
       <Version>1.1.31</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MvvmToolkit\" />
-  </ItemGroup>
 </Project>

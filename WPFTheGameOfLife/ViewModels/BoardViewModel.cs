@@ -1,12 +1,14 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
-using System;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using WPFTheGameOfLife.Events;
 using WPFTheGameOfLife.GameOfLife;
+using WPFTheGameOfLife.Messages;
 using WPFTheGameOfLife.Models;
+using WPFTheGameOfLife.Views;
 
 namespace WPFTheGameOfLife.ViewModels
 {
@@ -77,11 +79,10 @@ namespace WPFTheGameOfLife.ViewModels
         }
         public bool StopButtonIsEnabled => !StartButtonIsEnabled;
 
-        public BoardViewModel(GameLogic gameLogic) //, IEventAggregator eventAggregator, IRegionManager regionManager)
+        public BoardViewModel(GameLogic gameLogic)
         {
             _gameLogic = gameLogic;
-            // _regionManager = regionManager;
-            // eventAggregator.GetEvent<StateOfBoardChangedEvent>().Subscribe(GetGameLogicEvent);
+            WeakReferenceMessenger.Default.Register<StateOfBoardChangedMessage>(this, (r, m) => GetGameLogicEvent(m));
             StartSimulationCommand = new RelayCommand(StartSimulation, () => StartButtonIsEnabled);
             StopSimulationCommand = new RelayCommand(StopSimulation, () => StopButtonIsEnabled);
             ResetBoardCommand = new RelayCommand(ResetBoard);
@@ -92,10 +93,10 @@ namespace WPFTheGameOfLife.ViewModels
             CellItems = gameLogic.DrawBoard(CellsArraySize, CellSize);
         }
 
-        private void GetGameLogicEvent(GameLogicEventParameter param)
+        private void GetGameLogicEvent(StateOfBoardChangedMessage param)
         {
-            Generation = param.Generation;
-            AliveCellsCount = param.AliveCellsCount;
+            Generation = param.Value.Generation;
+            AliveCellsCount = param.Value.AliveCellsCount;
         }
         private void StartSimulation()
         {
@@ -118,7 +119,8 @@ namespace WPFTheGameOfLife.ViewModels
         }
         private void GoToHelp()
         {
-            // _regionManager.RequestNavigate("BoardRegion", "SplashView");
+            ShellView shell = App.Current.Services.GetService<ShellView>();
+            shell.GetNavigationFrame().Navigate(App.Current.Services.GetService<HelpView>());
         }
         public void CellMouseEvents(object sender, MouseEventArgs e)
         {

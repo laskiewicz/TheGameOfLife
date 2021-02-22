@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Toolkit.Mvvm.Messaging;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using WPFTheGameOfLife.Events;
+using WPFTheGameOfLife.Messages;
 using WPFTheGameOfLife.Models;
 
 namespace WPFTheGameOfLife.GameOfLife
@@ -13,13 +14,11 @@ namespace WPFTheGameOfLife.GameOfLife
         private int _aliveCellsCount;
         private int _generation;
         private IDispatcherTimerAdapter _dispatcherTimerAdapter;
-        // private IEventAggregator _eventAggregator;
         public ObservableCollection<List<Cell>> CellItems;
 
-        public GameLogic(IDispatcherTimerAdapter dispatcherTimerAdapter) // IEventAggregator eventAggregator
+        public GameLogic(IDispatcherTimerAdapter dispatcherTimerAdapter)
         {
             _dispatcherTimerAdapter = dispatcherTimerAdapter;
-            // _eventAggregator = eventAggregator;
             _dispatcherTimerAdapter?.SetTask(DispatcherTimer_Tick);
         }
 
@@ -51,7 +50,7 @@ namespace WPFTheGameOfLife.GameOfLife
                 cell.isAlive = false;
             }
             UpdateAliveCellsCount();
-            // _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = _aliveCellsCount, Generation = _generation });
+            SendMessageToUI();
         }
         public ObservableCollection<List<Cell>> DrawBoard(int cllsArraySize, int cellSize)
         {
@@ -89,7 +88,7 @@ namespace WPFTheGameOfLife.GameOfLife
                 }
             }
             _generation = 0;
-            // _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = 0, Generation = 0 });
+            SendMessageToUI();
         }
 
         public void SimulationOneStep()
@@ -102,7 +101,7 @@ namespace WPFTheGameOfLife.GameOfLife
             _generation++;
             SimulationStep();
             UpdateAliveCellsCount();
-            // _eventAggregator?.GetEvent<StateOfBoardChangedEvent>().Publish(new GameLogicEventParameter() { AliveCellsCount = _aliveCellsCount, Generation = _generation });
+            SendMessageToUI();
         }
         private void SimulationStep()
         {
@@ -161,6 +160,16 @@ namespace WPFTheGameOfLife.GameOfLife
                         _aliveCellsCount++;
                 }
             }
+        }
+        private void SendMessageToUI()
+        {
+            WeakReferenceMessenger.Default.Send(
+                new StateOfBoardChangedMessage(
+                    new GameLogicMessageParameter()
+                    {
+                        AliveCellsCount = _aliveCellsCount,
+                        Generation = _generation
+                    }));
         }
     }
 }
