@@ -1,8 +1,8 @@
 ﻿using System;
 using Xunit;
 using WPFTheGameOfLife.GameOfLife;
-using Prism.Events;
-using WPFTheGameOfLife.Events;
+using WPFTheGameOfLife.Messages;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace TheGameOfLife.Tests
 {
@@ -16,7 +16,7 @@ namespace TheGameOfLife.Tests
         public void SetDispatcherTimerInterval_ShouldSet(double timerInterval)
         {
             DispatcherTimerAdapter dsa = new DispatcherTimerAdapter();
-            GameLogic gl = new GameLogic(null, dsa);
+            GameLogic gl = new GameLogic(dsa);
 
             gl.SetDispatcherTimerInterval(timerInterval);
 
@@ -28,7 +28,7 @@ namespace TheGameOfLife.Tests
         public void SetDispatcherTimerInterval_ShouldFail(double timerInterval)
         {
             DispatcherTimerAdapter dsa = new DispatcherTimerAdapter();
-            GameLogic gl = new GameLogic(null, dsa);
+            GameLogic gl = new GameLogic(dsa);
 
             Assert.Throws<ArgumentOutOfRangeException>(() => gl.SetDispatcherTimerInterval(timerInterval));
         }
@@ -37,7 +37,7 @@ namespace TheGameOfLife.Tests
         [InlineData(100, 100)]
         public void DrawBoard_ShouldPass(int cellCount, int cellSize)
         {
-            GameLogic gl = new GameLogic(null, null);
+            GameLogic gl = new GameLogic(null);
 
             gl.DrawBoard(cellCount, cellSize);
 
@@ -54,7 +54,7 @@ namespace TheGameOfLife.Tests
         [Fact]
         public void ResetBoard_ShouldPass()
         {
-            GameLogic gl = new GameLogic(null, null);
+            GameLogic gl = new GameLogic(null);
             gl.DrawBoard(10, 10);
             foreach (var subCells in gl.CellItems)
             {
@@ -78,7 +78,7 @@ namespace TheGameOfLife.Tests
         public void SimulationStep_ShouldPassSimpleCase()
         {
             DispatcherTimerDeterministic dtd = new DispatcherTimerDeterministic();
-            GameLogic gl = new GameLogic(null, dtd);
+            GameLogic gl = new GameLogic(dtd);
             gl.DrawBoard(10, 10);
             gl.CellItems[0][1].isAlive = true;
             gl.CellItems[1][1].isAlive = true;
@@ -94,7 +94,7 @@ namespace TheGameOfLife.Tests
         public void SimulationStep_ShouldPassTwoIterations()
         {
             DispatcherTimerDeterministic dtd = new DispatcherTimerDeterministic();
-            GameLogic gl = new GameLogic(null, dtd);
+            GameLogic gl = new GameLogic(dtd);
             gl.DrawBoard(10, 10);
             gl.CellItems[0][1].isAlive = true;
             gl.CellItems[1][1].isAlive = true;
@@ -111,7 +111,7 @@ namespace TheGameOfLife.Tests
         public void SimulationStep_ShouldPassRectanglePattern()
         {
             DispatcherTimerDeterministic dtd = new DispatcherTimerDeterministic();
-            GameLogic gl = new GameLogic(null, dtd);
+            GameLogic gl = new GameLogic(dtd);
             gl.DrawBoard(10, 10);
             gl.CellItems[1][2].isAlive = true;
             gl.CellItems[2][2].isAlive = true;
@@ -131,12 +131,11 @@ namespace TheGameOfLife.Tests
         public void AliveCellsCount_ShouldPassRectanglePattern()
         {
             DispatcherTimerDeterministic dtd = new DispatcherTimerDeterministic();
-            EventAggregator ea = new EventAggregator();
             int expectedAliveCellsCount = 6;
             int aliveCellsCount = 0;
-            ea.GetEvent<StateOfBoardChangedEvent>().Subscribe((param) => aliveCellsCount = param.AliveCellsCount);
+            WeakReferenceMessenger.Default.Register<StateOfBoardChangedMessage>(this, (r, m) => aliveCellsCount = m.Value.AliveCellsCount);
 
-            GameLogic gl = new GameLogic(ea, dtd);
+            GameLogic gl = new GameLogic(dtd);
             gl.DrawBoard(10, 10);
             gl.CellItems[1][2].isAlive = true;
             gl.CellItems[2][2].isAlive = true;
@@ -151,7 +150,7 @@ namespace TheGameOfLife.Tests
         public void SimulationStep_ShouldPassRectanglePatternTwoIterations()
         {
             DispatcherTimerDeterministic dtd = new DispatcherTimerDeterministic();
-            GameLogic gl = new GameLogic(null, dtd);
+            GameLogic gl = new GameLogic(dtd);
             gl.DrawBoard(10, 10);
             gl.CellItems[1][2].isAlive = true;
             gl.CellItems[2][2].isAlive = true;
