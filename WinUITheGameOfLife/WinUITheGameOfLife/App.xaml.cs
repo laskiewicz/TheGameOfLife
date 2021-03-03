@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -15,6 +16,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using WinUITheGameOfLife.ViewModels;
+using WinUITheGameOfLife.Views;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,12 +29,15 @@ namespace WinUITheGameOfLife
     /// </summary>
     public partial class App : Application
     {
+        public new static App Current => (App)Application.Current;
+        public IServiceProvider Services { get; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+            Services = ConfigureServices();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -43,7 +49,7 @@ namespace WinUITheGameOfLife
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
+            m_window = new ShellView();
             m_window.Activate();
         }
 
@@ -57,6 +63,25 @@ namespace WinUITheGameOfLife
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             // Save application state and stop any background activity
+        }
+
+        private static IServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+
+            //services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
+            //services.AddSingleton<GameLogic>();
+
+            services.AddSingleton<ShellViewModel>();
+            services.AddSingleton<ShellView>();
+
+            //services.AddSingleton<HelpView>();
+            //services.AddSingleton<HelpViewModel>();
+
+            //services.AddSingleton<BoardView>();
+            //services.AddSingleton<BoardViewModel>();
+
+            return services.BuildServiceProvider();
         }
 
         private Window m_window;

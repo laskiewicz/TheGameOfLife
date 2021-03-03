@@ -1,0 +1,28 @@
+﻿<Page x:Class="WinUITheGameOfLife.Views.HelpView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:prism="http://prismlibrary.com/"
+      xmlns:local="clr-namespace:WinUITheGameOfLife.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="500">
+    <Grid>
+        <StackPanel>
+            <TextBlock Margin="20,40,0,0" Style="{StaticResource Header}" HorizontalAlignment="Center" FontSize="28" FontWeight="ExtraBold">
+                The Game of Life
+            </TextBlock>
+            <TextBlock Margin="20,40,0,0" Style="{StaticResource Header}">
+                How to:
+            </TextBlock>
+            <TextBlock Margin="20" Style="{StaticResource Tips}" TextWrapping="Wrap">
+                🖱 Hold left-click and drag on board to make cells alive<LineBreak/>
+                🖱 Hold right-click to kill cells<LineBreak/><LineBreak/>
+                🔲 Press Start to begin simulation<LineBreak/><LineBreak/>
+                ℹ You can also adjust simulation interval by using slider
+            </TextBlock>
+            <Button Margin="50,20" Height="50" Content="Start Aplication" Command="{Binding StartAplicationCommand}" FontWeight="ExtraBold" FontSize="20" />
+        </StackPanel>
+        <TextBox Text="{Binding Path=CurrentVersion, FallbackValue='Debug'}"  FontSize="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" /> <!--ContentStringFormat="Current Version: {0}"-->
+    </Grid>
+</Page>
