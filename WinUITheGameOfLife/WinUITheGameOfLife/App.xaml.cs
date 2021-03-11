@@ -1,21 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using WinUITheGameOfLife.ViewModels;
 using WinUITheGameOfLife.Views;
 
@@ -39,7 +24,7 @@ namespace WinUITheGameOfLife
         {
             Services = ConfigureServices();
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            // this.Suspending += OnSuspending;
         }
 
         /// <summary>
@@ -47,7 +32,7 @@ namespace WinUITheGameOfLife
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             m_window = new ShellView();
             m_window.Activate();
@@ -60,10 +45,10 @@ namespace WinUITheGameOfLife
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
-        {
-            // Save application state and stop any background activity
-        }
+        //private void OnSuspending(object sender, SuspendingEventArgs e)
+        //{
+        //    // Save application state and stop any background activity
+        //}
 
         private static IServiceProvider ConfigureServices()
         {
