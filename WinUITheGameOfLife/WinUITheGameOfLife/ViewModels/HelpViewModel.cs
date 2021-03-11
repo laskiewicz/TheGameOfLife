@@ -35,7 +35,7 @@ namespace WinUITheGameOfLife.ViewModels
         private void StartAplication()
         {
             ShellView shell = App.Current.Services.GetService<ShellView>();
-            // shell.GetNavigationFrame().Navigate(App.Current.Services.GetService<BoardView>());
+            shell.GetNavigationFrame().Navigate(typeof(BoardView));
         }
     }
 }

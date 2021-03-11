@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="DefaultTheme.xaml" />
+    <None Remove="Views\BoardView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +22,9 @@
 
   <ItemGroup>
     <Page Update="DefaultTheme.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\BoardView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="Views\HelpView.xaml">
