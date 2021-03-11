@@ -8,10 +8,11 @@ namespace WinUITheGameOfLife.Views
     /// </summary>
     public partial class HelpView : Page
     {
-        public HelpView(HelpViewModel helpViewModel)
+        public HelpView()
         {
             InitializeComponent();
-            DataContext = helpViewModel;
+            ViewModel = new HelpViewModel();
         }
+        public HelpViewModel ViewModel { get; set; }
     }
 }

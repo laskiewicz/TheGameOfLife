@@ -13,9 +13,11 @@ namespace WinUITheGameOfLife.Views
         public ShellView()
         {
             this.InitializeComponent();
-            //DataContext = App.Current.Services.GetService<ShellViewModel>();
-            //MainContentFrame.Navigate(App.Current.Services.GetService<HelpView>());
+            ViewModel = App.Current.Services.GetService<ShellViewModel>();
+            MainContentFrame.Navigate(typeof(HelpView));
+
         }
+        public ShellViewModel ViewModel { get; set; }
         public Frame GetNavigationFrame()
             => MainContentFrame;
     }

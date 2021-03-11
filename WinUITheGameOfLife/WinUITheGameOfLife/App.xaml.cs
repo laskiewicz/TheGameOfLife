@@ -60,8 +60,8 @@ namespace WinUITheGameOfLife
             services.AddSingleton<ShellViewModel>();
             services.AddSingleton<ShellView>();
 
-            //services.AddSingleton<HelpView>();
-            //services.AddSingleton<HelpViewModel>();
+            services.AddSingleton<HelpView>();
+            services.AddSingleton<HelpViewModel>();
 
             //services.AddSingleton<BoardView>();
             //services.AddSingleton<BoardViewModel>();
