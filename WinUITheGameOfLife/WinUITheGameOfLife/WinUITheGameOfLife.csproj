@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TheGameOfLifeLibrary\TheGameOfLifeLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="DefaultTheme.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
+using TheGameOfLifeLibrary;
 using WinUITheGameOfLife.ViewModels;
 using WinUITheGameOfLife.Views;
 
@@ -34,7 +35,7 @@ namespace WinUITheGameOfLife
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            m_window = new ShellView();
+            m_window = this.Services.GetService<ShellView>();
             m_window.Activate();
         }
 
@@ -54,8 +55,8 @@ namespace WinUITheGameOfLife
         {
             var services = new ServiceCollection();
 
-            //services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
-            //services.AddSingleton<GameLogic>();
+            services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
+            services.AddSingleton<GameLogic>();
 
             services.AddSingleton<ShellViewModel>();
             services.AddSingleton<ShellView>();
@@ -63,8 +64,8 @@ namespace WinUITheGameOfLife
             services.AddSingleton<HelpView>();
             services.AddSingleton<HelpViewModel>();
 
-            //services.AddSingleton<BoardView>();
-            //services.AddSingleton<BoardViewModel>();
+            services.AddSingleton<BoardView>();
+            services.AddSingleton<BoardViewModel>();
 
             return services.BuildServiceProvider();
         }

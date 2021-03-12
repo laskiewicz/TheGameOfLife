@@ -17,13 +17,14 @@
         <Setter Property="FontFamily" Value="Segoe UI Light"/>
         <Setter Property="Foreground" Value="DodgerBlue"/>
     </Style>
+<!--  
     <Style TargetType="Button">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="DodgerBlue"/>
         <Setter Property="BorderBrush" Value="DodgerBlue"/>
-<!--
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -48,6 +49,7 @@
                 </ControlTemplate>
             </Setter.Value>
             </Setter>
--->
+
     </Style>
+    -->
 </ResourceDictionary>

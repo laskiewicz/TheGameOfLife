@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using System;
+using TheGameOfLifeLibrary;
 
-namespace TheGameOfLifeLibrary
+namespace WinUITheGameOfLife
 {
     public class DispatcherTimerAdapter : IDispatcherTimerAdapter
     {
         private Action _timerAction;
-        public System.Windows.Threading.DispatcherTimer _dispatcherTimer;
+        public DispatcherTimer _dispatcherTimer;
         public double DispatcherTimerInterval
         {
             get => _dispatcherTimer.Interval.TotalMilliseconds;
@@ -14,7 +16,7 @@ namespace TheGameOfLifeLibrary
 
         public DispatcherTimerAdapter()
         {
-            _dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            _dispatcherTimer = new DispatcherTimer();
         }
 
         public void SetTask(Action action)
@@ -30,7 +32,7 @@ namespace TheGameOfLifeLibrary
         {
             _dispatcherTimer.Stop();
         }
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        private void DispatcherTimer_Tick(object sender, object e)
         {
             _timerAction();
         }

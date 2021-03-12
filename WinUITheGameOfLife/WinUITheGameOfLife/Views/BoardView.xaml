@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="WinUITheGameOfLife.Views.HelpView"
+    x:Class="WinUITheGameOfLife.Views.BoardView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUITheGameOfLife.Views"
@@ -8,8 +8,8 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d" 
     d:DesignHeight="500" d:DesignWidth="500"
-    Background="White">
-    <Grid>
+    Background="DarkGray">
+    <Grid x:DefaultBindMode="OneWay">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -20,23 +20,23 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Margin="10" VerticalAlignment="Top" Orientation="Vertical">
-            <Button Content="▶ Start" Command="{Binding StartSimulationCommand}" FontWeight="Bold" />
-            <Button Content="⏹ Stop" Margin="0,10,0,0" Command="{Binding StopSimulationCommand}" FontWeight="Bold" />
-            <Button Content="One Step" Margin="0,20,0,0" Command="{Binding SimulationStepCommand}" />
-            <Button x:Name="ResetBoard" Margin="0,5,0,0" Content="Reset Board" Command="{Binding ResetBoardCommand}" />
+            <Button Content="▶ Start" Command="{x:Bind ViewModel.StartSimulationCommand}" FontWeight="Bold" />
+            <Button Content="⏹ Stop" Margin="0,10,0,0" Command="{x:Bind ViewModel.StopSimulationCommand}" FontWeight="Bold" />
+            <Button Content="One Step" Margin="0,20,0,0" Command="{x:Bind ViewModel.SimulationStepCommand}" />
+            <Button x:Name="ResetBoard" Margin="0,5,0,0" Content="Reset Board" Command="{x:Bind ViewModel.ResetBoardCommand}" />
 
-            <Label Content="{Binding ElementName=simulationSpeed, Path=Value, UpdateSourceTrigger=PropertyChanged}" ContentStringFormat="Simulation interval: {0}ms" Margin="0,10,0,0" />
-            <Slider x:Name="simulationSpeed" Minimum="10" Maximum="2000" Value="{Binding SimulationSpeed}" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Ticks="10, 100, 250, 500, 750, 1000, 2000" />
+            <TextBlock Text="{x:Bind simulationSpeed.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,10,0,0" /> <!--StringFormat="Simulation interval: {0}ms"-->
+            <Slider x:Name="simulationSpeed" Minimum="10" Maximum="2000" Value="{x:Bind ViewModel.SimulationSpeed}" TickPlacement="BottomRight" TickFrequency="50" />
 
-            <Label Content="{Binding Path=AliveCellsCount, FallbackValue=0}" ContentStringFormat="Number of living cells: {0}" Margin="0,20,0,0" />
-            <Label Content="{Binding Path=Generation, FallbackValue=0}" ContentStringFormat="Generation: {0}" />
+            <TextBlock Text="{x:Bind ViewModel.AliveCellsCount, FallbackValue=0}"  Margin="0,20,0,0" /> <!--ContentStringFormat="Number of living cells: {0}"-->
+            <TextBlock Text="{x:Bind ViewModel.Generation, FallbackValue=0}"  /> <!--ContentStringFormat="Generation: {0}"-->
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom">
-            <Button Margin="5 0 75 0" Content="❓ Help" Command="{Binding GoToHelpCommand}" FontSize="10" />
-            <Label Content="{Binding Path=CurrentVersion, FallbackValue='Debug'}" ContentStringFormat="Current Version: {0}" FontSize="10" />
+            <Button Margin="5 0 75 0" Content="❓ Help" Command="{x:Bind ViewModel.GoToHelpCommand}" FontSize="10" />
+            <TextBlock Text="{x:Bind ViewModel.CurrentVersion, FallbackValue='Debug'}" FontSize="10" /> <!--ContentStringFormat="Current Version: {0}"-->
         </StackPanel>
         
-        <ItemsControl Margin="10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
+        <!--<ItemsControl Margin="10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">
@@ -68,6 +68,6 @@
                     </ItemsControl>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        </ItemsControl>-->
     </Grid>
 </Page>

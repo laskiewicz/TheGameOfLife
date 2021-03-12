@@ -15,7 +15,6 @@ namespace WinUITheGameOfLife.Views
             this.InitializeComponent();
             ViewModel = App.Current.Services.GetService<ShellViewModel>();
             MainContentFrame.Navigate(typeof(HelpView));
-
         }
         public ShellViewModel ViewModel { get; set; }
         public Frame GetNavigationFrame()
