@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System.Collections.Generic;
@@ -118,7 +119,7 @@ namespace WinUITheGameOfLife.ViewModels
         }
         private void GoToHelp()
         {
-            ShellView shell = App.Current.Services.GetService<ShellView>();
+            ShellView shell = Ioc.Default.GetService<ShellView>();
             shell.GetNavigationFrame().Navigate(typeof(HelpView));
         }
         //public void CellMouseEvents(object sender, MouseEventArgs e)

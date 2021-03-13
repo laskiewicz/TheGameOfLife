@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Input;
 using WinUITheGameOfLife.Views;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 namespace WinUITheGameOfLife.ViewModels
 {
@@ -34,7 +35,7 @@ namespace WinUITheGameOfLife.ViewModels
 
         private void StartAplication()
         {
-            ShellView shell = App.Current.Services.GetService<ShellView>();
+            ShellView shell = Ioc.Default.GetService<ShellView>();
             shell.GetNavigationFrame().Navigate(typeof(BoardView));
         }
     }

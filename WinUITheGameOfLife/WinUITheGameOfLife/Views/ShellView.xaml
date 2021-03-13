@@ -9,7 +9,13 @@
     > <!--Title="The Game of Life"> Height="559" Width="736" ResizeMode="CanMinimize">-->
 
     <Grid>
-        <Frame x:Name="MainContentFrame" />
-        <!--NavigationUIVisibility="Hidden"-->
+        <NavigationView
+            x:Name="NavView">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Informations" Icon="Help" />
+                <NavigationViewItem Content="Board" Icon="Favorite" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="MainContentFrame"/>
+        </NavigationView>
     </Grid>
 </Window>

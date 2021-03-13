@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
 using TheGameOfLifeLibrary;
@@ -15,16 +16,14 @@ namespace WinUITheGameOfLife
     /// </summary>
     public partial class App : Application
     {
-        public new static App Current => (App)Application.Current;
-        public IServiceProvider Services { get; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
-            Services = ConfigureServices();
             this.InitializeComponent();
+            Ioc.Default.ConfigureServices(ConfigureServices());
             // this.Suspending += OnSuspending;
         }
 
@@ -35,7 +34,7 @@ namespace WinUITheGameOfLife
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            m_window = this.Services.GetService<ShellView>();
+            m_window = Ioc.Default.GetService<ShellView>();
             m_window.Activate();
         }
 
