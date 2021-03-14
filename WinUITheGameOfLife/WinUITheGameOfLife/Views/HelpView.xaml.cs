@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI.Xaml.Controls;
 using WinUITheGameOfLife.ViewModels;
 
@@ -13,7 +13,7 @@ namespace WinUITheGameOfLife.Views
         {
             InitializeComponent();
             this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            ViewModel = App.Current.Services.GetService<HelpViewModel>();
+            ViewModel = Ioc.Default.GetService<HelpViewModel>();
         }
         public HelpViewModel ViewModel { get; set; }
     }

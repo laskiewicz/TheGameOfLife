@@ -10,10 +10,14 @@
 
     <Grid>
         <NavigationView
-            x:Name="NavView">
+            x:Name="NavView"
+            Loaded="NavView_Loaded"
+            SelectionChanged="NavView_SelectionChanged"
+            IsBackButtonVisible="Collapsed"
+            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Informations" Icon="Help" />
-                <NavigationViewItem Content="Board" Icon="Favorite" />
+                <NavigationViewItem Tag="HelpView" Content="Informations" Icon="Help" />
+                <NavigationViewItem Tag="BoardView" Content="Board" Icon="Favorite" />
             </NavigationView.MenuItems>
             <Frame x:Name="MainContentFrame"/>
         </NavigationView>

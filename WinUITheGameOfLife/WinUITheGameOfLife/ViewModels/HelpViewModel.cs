@@ -1,9 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Input;
 using WinUITheGameOfLife.Views;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
 
 namespace WinUITheGameOfLife.ViewModels
 {

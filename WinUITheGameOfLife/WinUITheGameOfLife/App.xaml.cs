@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
 using TheGameOfLifeLibrary;
+using WinUITheGameOfLife.Services;
 using WinUITheGameOfLife.ViewModels;
 using WinUITheGameOfLife.Views;
 
@@ -66,9 +67,14 @@ namespace WinUITheGameOfLife
             services.AddSingleton<BoardView>();
             services.AddSingleton<BoardViewModel>();
 
+            services.AddSingleton<SettingsPage>();
+            services.AddSingleton<SettingsViewModel>();
+
+            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+
             return services.BuildServiceProvider();
         }
 
-        private Window m_window;
+        public static Window m_window;
     }
 }

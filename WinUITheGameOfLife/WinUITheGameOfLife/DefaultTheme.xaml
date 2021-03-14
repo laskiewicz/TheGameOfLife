@@ -52,4 +52,58 @@
 
     </Style>
     -->
+    <Style TargetType="Page" x:Key="PageStyle">
+        <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+    </Style>
+    
+    <x:Double x:Key="LargeFontSize">24</x:Double>
+
+    <x:Double x:Key="MediumFontSize">16</x:Double>
+    
+    <!--Large size margins-->
+    <Thickness x:Key="LargeTopMargin">0,36,0,0</Thickness>
+    <Thickness x:Key="LargeTopBottomMargin">0,36,0,36</Thickness>
+
+    <!--Medium size margins-->
+    <Thickness x:Key="MediumTopMargin">0,24,0,0</Thickness>
+    <Thickness x:Key="MediumTopBottomMargin">0,24,0,24</Thickness>
+    <Thickness x:Key="MediumLeftRightMargin">24,0,24,0</Thickness>
+    <Thickness x:Key="MediumBottomMargin">0,0,0,24</Thickness>
+
+    <!--Small size margins-->
+    <Thickness x:Key="SmallLeftMargin">12,0,0,0</Thickness>
+    <Thickness x:Key="SmallLeftRightMargin">12,0,12,0</Thickness>
+    <Thickness x:Key="SmallTopMargin">0,12,0,0</Thickness>
+    <Thickness x:Key="SmallRightMargin">0,0,12,0</Thickness>
+    <Thickness x:Key="SmallTopBottomMargin">0,12,0,12</Thickness>
+
+    <!--Extra Small size margins-->
+    <Thickness x:Key="XSmallLeftMargin">8, 0, 0, 0</Thickness>
+    <Thickness x:Key="XSmallTopMargin">0, 8, 0, 0</Thickness>
+    <Thickness x:Key="XSmallLeftTopRightBottomMargin">8, 8, 8, 8</Thickness>
+
+    <!--Extra Extra Small size margins-->
+    <Thickness x:Key="XXSmallTopMargin">0, 4, 0, 0</Thickness>
+    <Thickness x:Key="XXSmallLeftTopRightBottomMargin">4, 4, 4, 4</Thickness>
+
+    <!--MasterDetail size margins-->
+    <Thickness x:Key="DetailPageMargin">52,40,52,0</Thickness>
+
+    
+    <!--Common texts-->
+    <Style x:Key="PageTitleStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="SemiLight" />
+        <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
+    <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
 </ResourceDictionary>
