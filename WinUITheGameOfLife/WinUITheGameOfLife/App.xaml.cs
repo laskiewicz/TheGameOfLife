@@ -6,6 +6,7 @@ using TheGameOfLifeLibrary;
 using WinUITheGameOfLife.Services;
 using WinUITheGameOfLife.ViewModels;
 using WinUITheGameOfLife.Views;
+using WinUITheGameOfLife.Services;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -55,22 +56,21 @@ namespace WinUITheGameOfLife
         {
             var services = new ServiceCollection();
 
-            services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
-            services.AddSingleton<GameLogic>();
-
-            services.AddSingleton<ShellViewModel>();
             services.AddSingleton<ShellView>();
+            services.AddSingleton<ShellViewModel>();
 
-            services.AddSingleton<HelpView>();
             services.AddSingleton<HelpViewModel>();
 
-            services.AddSingleton<BoardView>();
             services.AddSingleton<BoardViewModel>();
 
-            services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsViewModel>();
 
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+
+            services.AddSingleton<GameLogicService>();
+            services.AddSingleton<GameLogic>();
+
+            services.AddSingleton<IDispatcherTimerAdapter, DispatcherTimerAdapter>();
 
             return services.BuildServiceProvider();
         }

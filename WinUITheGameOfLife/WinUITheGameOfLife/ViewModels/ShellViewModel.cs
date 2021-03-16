@@ -6,15 +6,8 @@ namespace WinUITheGameOfLife.ViewModels
 {
     public class ShellViewModel : ObservableRecipient
     {
-        private Page _currentpage;
-        public Page CurrentPage
+        public ShellViewModel()
         {
-            get => _currentpage;
-            set => SetProperty(ref _currentpage, value);
-        }
-        public ShellViewModel(HelpView splashView)//IRegionManager regionManager)
-        {
-            CurrentPage = splashView;
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using System;
-using TheGameOfLifeLibrary;
 
-namespace WinUITheGameOfLife
+namespace WinUITheGameOfLife.Services
 {
     public class DispatcherTimerAdapter : IDispatcherTimerAdapter
     {

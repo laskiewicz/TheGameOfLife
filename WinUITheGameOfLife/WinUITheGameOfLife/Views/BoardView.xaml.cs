@@ -1,4 +1,5 @@
-﻿using Microsoft.Graphics.Canvas.UI.Xaml;
+﻿using Microsoft.Graphics.Canvas.Geometry;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
@@ -21,8 +22,14 @@ namespace WinUITheGameOfLife.Views
 
         void canvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
         {
-            args.DrawingSession.DrawEllipse(155, 115, 80, 30, Colors.Black, 3);
-            args.DrawingSession.DrawText("Hello, world!", 100, 100, Colors.Yellow);
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    args.DrawingSession.DrawRectangle(i*10, j*10, 10, 10, Colors.White, 1);
+                    args.DrawingSession.FillRectangle(i*10, j*10, 10, 10, Colors.LightGreen);
+                }
+            }
         }
     }
 }

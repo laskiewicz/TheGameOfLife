@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheGameOfLifeLibrary
+namespace WinUITheGameOfLife.Services
 {
     public interface IDispatcherTimerAdapter
     {

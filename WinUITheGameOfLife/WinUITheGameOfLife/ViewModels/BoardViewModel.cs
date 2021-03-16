@@ -7,21 +7,13 @@ using System.Collections.ObjectModel;
 using TheGameOfLifeLibrary;
 using TheGameOfLifeLibrary.Models;
 using WinUITheGameOfLife.Messages;
+using WinUITheGameOfLife.Services;
 using WinUITheGameOfLife.Views;
 
 namespace WinUITheGameOfLife.ViewModels
 {
     public class BoardViewModel : ObservableObject
     {
-        private bool _startButtonIsEnabled = true;
-        private int _aliveCellsCount;
-        private int _generation;
-        private const int CellsArraySize = 50;
-        private const int CellSize = 10;
-        private double _simulationSpeed = 250;
-        private string _currentVersion;
-        private readonly GameLogic _gameLogic;
-
         public ObservableCollection<List<Cell>> CellItems { get; set; }
         public RelayCommand StartSimulationCommand { get; private set; }
         public RelayCommand StopSimulationCommand { get; private set; }
@@ -29,6 +21,14 @@ namespace WinUITheGameOfLife.ViewModels
         public RelayCommand SimulationStepCommand { get; private set; }
         public RelayCommand GoToHelpCommand { get; private set; }
 
+        private bool _startButtonIsEnabled = true;
+        private int _aliveCellsCount;
+        private int _generation;
+        private const int CellsArraySize = 50;
+        private const int CellSize = 10;
+        private double _simulationSpeed = 250;
+        private string _currentVersion;
+        private readonly GameLogicService _gameLogicService;
         public int AliveCellsCount
         {
             get => _aliveCellsCount;
@@ -62,7 +62,7 @@ namespace WinUITheGameOfLife.ViewModels
             set
             {
                 SetProperty(ref _simulationSpeed, value);
-                _gameLogic.SetDispatcherTimerInterval(_simulationSpeed);
+                _gameLogicService.SetDispatcherTimerInterval(_simulationSpeed);
             }
         }
         public bool StartButtonIsEnabled
@@ -78,9 +78,9 @@ namespace WinUITheGameOfLife.ViewModels
         }
         public bool StopButtonIsEnabled => !StartButtonIsEnabled;
 
-        public BoardViewModel(GameLogic gameLogic)
+        public BoardViewModel(GameLogicService gameLogicService)
         {
-            _gameLogic = gameLogic;
+            _gameLogicService = gameLogicService;
             WeakReferenceMessenger.Default.Register<StateOfBoardChangedMessage>(this, (r, m) => GetGameLogicEvent(m));
             StartSimulationCommand = new RelayCommand(StartSimulation, () => StartButtonIsEnabled);
             StopSimulationCommand = new RelayCommand(StopSimulation, () => StopButtonIsEnabled);
@@ -88,8 +88,8 @@ namespace WinUITheGameOfLife.ViewModels
             SimulationStepCommand = new RelayCommand(SimulationOneStep);
             GoToHelpCommand = new RelayCommand(GoToHelp);
 
-            _gameLogic.SetDispatcherTimerInterval(_simulationSpeed);
-            CellItems = gameLogic.DrawBoard(CellsArraySize, CellSize);
+            _gameLogicService.SetDispatcherTimerInterval(_simulationSpeed);
+            CellItems = _gameLogicService.SetupBoardArray(CellsArraySize, CellSize);
         }
 
         private void GetGameLogicEvent(StateOfBoardChangedMessage param)
@@ -100,21 +100,21 @@ namespace WinUITheGameOfLife.ViewModels
         private void StartSimulation()
         {
             StartButtonIsEnabled = false;
-            _gameLogic.StartSimulation();
+            _gameLogicService.StartSimulation();
         }
         private void StopSimulation()
         {
             StartButtonIsEnabled = true;
-            _gameLogic.StopSimulation();
+            _gameLogicService.StopSimulation();
         }
         private void SimulationOneStep()
         {
-            _gameLogic.SimulationOneStep();
+            _gameLogicService.SimulationOneStep();
         }
         private void ResetBoard()
         {
             StopSimulation();
-            _gameLogic.ResetBoard();
+            _gameLogicService.ResetBoard();
         }
         private void GoToHelp()
         {

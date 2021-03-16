@@ -40,7 +40,7 @@
             <Button Margin="5 0 75 0" Content="❓ Help" Command="{x:Bind ViewModel.GoToHelpCommand}" FontSize="10" />
             <TextBlock Text="{x:Bind ViewModel.CurrentVersion, FallbackValue='Debug'}" FontSize="10" /> <!--ContentStringFormat="Current Version: {0}"-->
         </StackPanel>
-        <canvas:CanvasControl Draw="canvasControl_Draw" ClearColor="CornflowerBlue" Grid.Column="1" Grid.RowSpan="2"/>
+        <canvas:CanvasControl Draw="canvasControl_Draw" Grid.Column="1" Grid.RowSpan="3"/>
         <!--<ItemsControl Margin="10"  ItemsSource="{Binding CellItems}" Background="Black" Grid.Column="1" Grid.RowSpan="2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>

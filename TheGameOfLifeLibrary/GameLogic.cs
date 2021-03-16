@@ -6,65 +6,25 @@ namespace TheGameOfLifeLibrary
 {
     public class GameLogic
     {
-        private int _aliveCellsCount;
-        private int _generation;
-        private IDispatcherTimerAdapter _dispatcherTimerAdapter;
         public ObservableCollection<List<Cell>> CellItems;
 
-        public GameLogic(IDispatcherTimerAdapter dispatcherTimerAdapter)
+        public GameLogic()
         {
-            _dispatcherTimerAdapter = dispatcherTimerAdapter;
-            _dispatcherTimerAdapter?.SetTask(DispatcherTimer_Tick);
         }
-
-        public void StartSimulation()
-        {
-            _dispatcherTimerAdapter.Start();
-        }
-        public void StopSimulation()
-        {
-            _dispatcherTimerAdapter.Stop();
-        }
-        public void SetDispatcherTimerInterval(double timerInterval)
-        {
-            _dispatcherTimerAdapter.DispatcherTimerInterval = timerInterval;
-        }
-        //public void MouseEvent(MouseEventArgs e)
-        //{
-        //    Rectangle ClickedRectangle = e.OriginalSource as Rectangle;
-        //    Cell cell = ClickedRectangle.DataContext as Cell;
-
-        //    if (e.LeftButton == MouseButtonState.Pressed)
-        //    {
-        //        ClickedRectangle.Fill = Brushes.Green;
-        //        cell.isAlive = true;
-        //    }
-        //    else
-        //    {
-        //        ClickedRectangle.Fill = Brushes.White;
-        //        cell.isAlive = false;
-        //    }
-        //    UpdateAliveCellsCount();
-        //    SendMessageToUI();
-        //}
-        public ObservableCollection<List<Cell>> DrawBoard(int cllsArraySize, int cellSize)
+        private int _aliveCellsCount = 0;
+        private int _generation = 0;
+        public ObservableCollection<List<Cell>> SetupBoardArray(int cellsArraySize, int cellSize)
         {
             CellItems = new ObservableCollection<List<Cell>>();
 
-            for (int i = 0; i < cllsArraySize; i++)
+            for (int i = 0; i < cellsArraySize; i++)
             {
                 CellItems.Add(new List<Cell>());
 
-                for (int j = 0; j < cllsArraySize; j++)
+                for (int j = 0; j < cellsArraySize; j++)
                 {
                     Cell cell = new Cell()
                     {
-                        X = i * cellSize,
-                        Y = j * cellSize,
-                        Width = cellSize,
-                        Height = cellSize,
-                        //Stroke = Brushes.LightGray,
-                        //Fill = Brushes.White,
                         isAlive = false,
                     };
                     CellItems[i].Add(cell);
@@ -85,21 +45,9 @@ namespace TheGameOfLifeLibrary
             _generation = 0;
             // SendMessageToUI();
         }
-
-        public void SimulationOneStep()
-        {
-            DispatcherTimer_Tick();
-        }
-
-        private void DispatcherTimer_Tick()
+        public void SimulationStep()
         {
             _generation++;
-            SimulationStep();
-            UpdateAliveCellsCount();
-            // SendMessageToUI();
-        }
-        private void SimulationStep()
-        {
             // Checking for neighbours
             for (int i = 0; i < CellItems.Count; i++)
             {
@@ -144,7 +92,7 @@ namespace TheGameOfLifeLibrary
                 }
             }
         }
-        private void UpdateAliveCellsCount()
+        public void UpdateAliveCellsCount()
         {
             _aliveCellsCount = 0;
             foreach (var subCells in CellItems)
