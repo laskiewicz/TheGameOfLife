@@ -1,6 +1,7 @@
 ﻿using TheGameOfLifeLibrary.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System;
 
 namespace TheGameOfLifeLibrary
 {
@@ -15,6 +16,7 @@ namespace TheGameOfLifeLibrary
         private int _generation = 0;
         public ObservableCollection<List<Cell>> SetupBoardArray(int cellsArraySize, int cellSize)
         {
+            Random rnd = new();
             CellItems = new ObservableCollection<List<Cell>>();
 
             for (int i = 0; i < cellsArraySize; i++)
@@ -25,7 +27,7 @@ namespace TheGameOfLifeLibrary
                 {
                     Cell cell = new Cell()
                     {
-                        isAlive = false,
+                        isAlive = rnd.Next(0, 2) == 1,
                     };
                     CellItems[i].Add(cell);
                 }

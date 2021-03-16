@@ -1,8 +1,8 @@
-﻿using Microsoft.Graphics.Canvas.Geometry;
-using Microsoft.Graphics.Canvas.UI.Xaml;
+﻿using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
+using Windows.UI;
 using WinUITheGameOfLife.ViewModels;
 
 namespace WinUITheGameOfLife.Views
@@ -22,12 +22,13 @@ namespace WinUITheGameOfLife.Views
 
         void canvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
-                for (int j = 0; j < 100; j++)
+                for (int j = 0; j < 50; j++)
                 {
-                    args.DrawingSession.DrawRectangle(i*10, j*10, 10, 10, Colors.White, 1);
-                    args.DrawingSession.FillRectangle(i*10, j*10, 10, 10, Colors.LightGreen);
+                    Color isAlive = ViewModel.CellItems[i][j].isAlive ? Colors.Green : Colors.Gray;
+                    args.DrawingSession.DrawRectangle(i * 10, j * 10, 10, 10, Colors.White, 1);
+                    args.DrawingSession.FillRectangle(i * 10, j * 10, 10, 10, isAlive);
                 }
             }
         }
