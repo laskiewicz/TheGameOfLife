@@ -1,4 +1,5 @@
-﻿using Microsoft.Graphics.Canvas.UI.Xaml;
+﻿using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
@@ -20,7 +21,7 @@ namespace WinUITheGameOfLife.Views
         }
         public BoardViewModel ViewModel { get; set; }
 
-        void canvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
+        private void CanvasAnimatedControl_Draw(ICanvasAnimatedControl sender, CanvasAnimatedDrawEventArgs args)
         {
             for (int i = 0; i < 50; i++)
             {
@@ -29,6 +30,23 @@ namespace WinUITheGameOfLife.Views
                     Color isAlive = ViewModel.CellItems[i][j].isAlive ? Colors.Green : Colors.Gray;
                     args.DrawingSession.DrawRectangle(i * 10, j * 10, 10, 10, Colors.White, 1);
                     args.DrawingSession.FillRectangle(i * 10, j * 10, 10, 10, isAlive);
+                }
+            }
+        }
+
+        private void CanvasAnimatedControl_CreateResources(CanvasAnimatedControl sender, Microsoft.Graphics.Canvas.UI.CanvasCreateResourcesEventArgs args)
+        {
+            CanvasCommandList cl = new CanvasCommandList(sender);
+            using (CanvasDrawingSession clds = cl.CreateDrawingSession())
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    for (int j = 0; j < 50; j++)
+                    {
+                        Color isAlive = ViewModel.CellItems[i][j].isAlive ? Colors.Green : Colors.Gray;
+                        clds.DrawRectangle(i * 10, j * 10, 10, 10, Colors.White, 1);
+                        clds.FillRectangle(i * 10, j * 10, 10, 10, isAlive);
+                    }
                 }
             }
         }
