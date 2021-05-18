@@ -21,7 +21,7 @@ namespace WinUITheGameOfLife.Views
         }
         public BoardViewModel ViewModel { get; set; }
 
-        private void CanvasAnimatedControl_Draw(ICanvasAnimatedControl sender, CanvasAnimatedDrawEventArgs args)
+        private void CanvasAnimatedControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
         {
             for (int i = 0; i < 50; i++)
             {
@@ -34,7 +34,7 @@ namespace WinUITheGameOfLife.Views
             }
         }
 
-        private void CanvasAnimatedControl_CreateResources(CanvasAnimatedControl sender, Microsoft.Graphics.Canvas.UI.CanvasCreateResourcesEventArgs args)
+        private void CanvasAnimatedControl_CreateResources(CanvasControl sender, Microsoft.Graphics.Canvas.UI.CanvasCreateResourcesEventArgs args)
         {
             CanvasCommandList cl = new CanvasCommandList(sender);
             using (CanvasDrawingSession clds = cl.CreateDrawingSession())
