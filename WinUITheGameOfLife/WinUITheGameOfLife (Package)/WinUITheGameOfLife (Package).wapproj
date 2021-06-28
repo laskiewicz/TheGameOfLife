@@ -20,25 +20,17 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|arm64">
-      <Configuration>Debug</Configuration>
-      <Platform>arm64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|arm64">
-      <Configuration>Release</Configuration>
-      <Platform>arm64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup>
     <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
     <PathToXAMLWinRTImplementations>WinUITheGameOfLife\</PathToXAMLWinRTImplementations>
-    <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
   </PropertyGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
   <PropertyGroup>
-    <ProjectGuid>7bab3afe-d3e5-4d4a-a7d9-2c4ac8d08050</ProjectGuid>
+    <ProjectGuid>fbb63cd1-cfb7-4353-ad16-c57d1dd73094</ProjectGuid>
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+	  <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
+	  <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\WinUITheGameOfLife\WinUITheGameOfLife.csproj</EntryPointProjectUniqueName>
@@ -48,26 +40,23 @@
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\SplashScreen.scale-200.png" />
-    <Content Include="Images\LockScreenLogo.scale-200.png" />
-    <Content Include="Images\Square150x150Logo.scale-200.png" />
-    <Content Include="Images\Square44x44Logo.scale-200.png" />
-    <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Images\StoreLogo.png" />
-    <Content Include="Images\Wide310x150Logo.scale-200.png" />
+	<ItemGroup>
+		<Content Include="Images\SplashScreen.scale-200.png" />
+		<Content Include="Images\LockScreenLogo.scale-200.png" />
+		<Content Include="Images\Square150x150Logo.scale-200.png" />
+		<Content Include="Images\Square44x44Logo.scale-200.png" />
+		<Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+		<Content Include="Images\StoreLogo.png" />
+		<Content Include="Images\Wide310x150Logo.scale-200.png" />
+	</ItemGroup>
+    <ItemGroup>
+	  <ProjectReference Include="..\WinUITheGameOfLife\WinUITheGameOfLife.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinUITheGameOfLife\WinUITheGameOfLife.csproj">
-      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
-      <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.ProjectReunion" Version="0.5.7">
+    <PackageReference Include="Microsoft.ProjectReunion" Version="[0.8.0]">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.5.7">
+    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[0.8.0]">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>
