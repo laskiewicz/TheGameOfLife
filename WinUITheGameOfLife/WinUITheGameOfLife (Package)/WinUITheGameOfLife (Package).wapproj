@@ -21,8 +21,8 @@
   <PropertyGroup>
     <ProjectGuid>fbb63cd1-cfb7-4353-ad16-c57d1dd73094</ProjectGuid>
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
-	  <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
-	  <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <AssetTargetFallback>net5.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\WinUITheGameOfLife\WinUITheGameOfLife.csproj</EntryPointProjectUniqueName>
@@ -32,25 +32,25 @@
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
-	<ItemGroup>
-		<Content Include="Images\SplashScreen.scale-200.png" />
-		<Content Include="Images\LockScreenLogo.scale-200.png" />
-		<Content Include="Images\Square150x150Logo.scale-200.png" />
-		<Content Include="Images\Square44x44Logo.scale-200.png" />
-		<Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
-		<Content Include="Images\StoreLogo.png" />
-		<Content Include="Images\Wide310x150Logo.scale-200.png" />
-	</ItemGroup>
-    <ItemGroup>
-	  <ProjectReference Include="..\WinUITheGameOfLife\WinUITheGameOfLife.csproj" />
+  <ItemGroup>
+    <Content Include="Images\SplashScreen.scale-200.png" />
+    <Content Include="Images\LockScreenLogo.scale-200.png" />
+    <Content Include="Images\Square150x150Logo.scale-200.png" />
+    <Content Include="Images\Square44x44Logo.scale-200.png" />
+    <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Images\StoreLogo.png" />
+    <Content Include="Images\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.ProjectReunion" Version="[0.8.0]">
-      <IncludeAssets>build</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="[0.8.0]">
-      <IncludeAssets>build</IncludeAssets>
-    </PackageReference>
+    <ProjectReference Include="..\WinUITheGameOfLife\WinUITheGameOfLife.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="[1.0.0-experimental1]">
+			<IncludeAssets>build</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="[1.0.0-experimental1]">
+			<IncludeAssets>build</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>
