@@ -3,6 +3,7 @@ using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
+using System.Threading.Tasks;
 using Windows.UI;
 using WinUITheGameOfLife.ViewModels;
 
@@ -18,7 +19,19 @@ namespace WinUITheGameOfLife.Views
             InitializeComponent();
             this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             ViewModel = Ioc.Default.GetService<BoardViewModel>();
+
+            _ = DrawLoopAsync();
         }
+
+        private async Task DrawLoopAsync()
+        {
+            while (true)
+            {
+                canvasControl.Invalidate();
+                await Task.Delay(250);
+            }
+        }
+
         public BoardViewModel ViewModel { get; set; }
 
         private void CanvasAnimatedControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
