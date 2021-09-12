@@ -40,9 +40,11 @@ namespace WinUITheGameOfLife.Views
             {
                 for (int j = 0; j < 50; j++)
                 {
-                    Color isAlive = ViewModel.CellItems[i][j].isAlive ? Colors.Green : Colors.Gray;
+                    Color cellColor = ViewModel.CellItems[i][j].isAlive ? Colors.Green : Colors.Gray;
+                    if (ViewModel.CellItems[i][j].wasAlive)
+                        cellColor = Colors.Red;
                     args.DrawingSession.DrawRectangle(i * 10, j * 10, 10, 10, Colors.White, 1);
-                    args.DrawingSession.FillRectangle(i * 10, j * 10, 10, 10, isAlive);
+                    args.DrawingSession.FillRectangle(i * 10, j * 10, 10, 10, cellColor);
                 }
             }
         }

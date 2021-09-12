@@ -86,11 +86,8 @@ namespace TheGameOfLifeLibrary
                     bool oldWillBeAlive = cell.willBeAlive;
                     bool oldIsAlive = cell.isAlive;
                     cell.isAlive = cell.willBeAlive;
-
-                    //if (!oldWillBeAlive && oldIsAlive)
-                    //    //cell.Fill = Brushes.Red;
-                    //else
-                    //    //cell.Fill = (cell.isAlive) ? Brushes.Green : Brushes.White;
+                    cell.willBeAlive = !cell.willBeAlive;
+                    cell.wasAlive = !oldWillBeAlive && oldIsAlive;
                 }
             }
         }

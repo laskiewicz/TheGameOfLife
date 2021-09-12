@@ -4,6 +4,7 @@
     {
         public bool isAlive { get; set; }
         public bool willBeAlive { get; set; }
+        public bool wasAlive { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
         public double Width { get; set; }
