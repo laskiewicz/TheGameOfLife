@@ -45,7 +45,7 @@
     <ProjectReference Include="..\WinUITheGameOfLife\WinUITheGameOfLife.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-preview2">
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>
