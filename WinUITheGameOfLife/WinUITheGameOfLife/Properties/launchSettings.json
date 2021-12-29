@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "WinUITheGameOfLife (Package)": {
+      "commandName": "MsixPackage",
+      "alwaysReinstallApp": true
+    },
+    "WinUITheGameOfLife (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
