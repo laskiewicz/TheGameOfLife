@@ -1,16 +1,14 @@
-﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using WinUITheGameOfLife.ViewModels;
 
-namespace WinUITheGameOfLife.Views
+namespace WinUITheGameOfLife.Views;
+
+public partial class SettingsPage : Page
 {
-    public partial class SettingsPage : Page
+    public SettingsPage()
     {
-        public SettingsPage()
-        {
-            InitializeComponent();
-            ViewModel = Ioc.Default.GetService<SettingsViewModel>();
-        }
-        public SettingsViewModel ViewModel { get; }
+        InitializeComponent();
+        ViewModel = Ioc.Default.GetService<SettingsViewModel>();
     }
+    public SettingsViewModel ViewModel { get; }
 }

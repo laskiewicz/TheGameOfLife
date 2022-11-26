@@ -2,16 +2,15 @@
 
 using Microsoft.UI.Xaml;
 
-namespace WinUITheGameOfLife.Services
+namespace WinUITheGameOfLife.Services;
+
+public interface IThemeSelectorService
 {
-    public interface IThemeSelectorService
-    {
-        ElementTheme Theme { get; }
+    ElementTheme Theme { get; }
 
-        Task InitializeAsync();
+    Task InitializeAsync();
 
-        Task SetThemeAsync(ElementTheme theme);
+    Task SetThemeAsync(ElementTheme theme);
 
-        Task SetRequestedThemeAsync();
-    }
+    Task SetRequestedThemeAsync();
 }

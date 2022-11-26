@@ -6,54 +6,53 @@ using Microsoft.UI.Xaml;
 using Windows.Storage;
 using WTS_WinUI_Navigation.Helpers;
 
-namespace WinUITheGameOfLife.Services
+namespace WinUITheGameOfLife.Services;
+
+public class ThemeSelectorService : IThemeSelectorService
 {
-    public class ThemeSelectorService : IThemeSelectorService
+    private const string SettingsKey = "AppBackgroundRequestedTheme";
+
+    public ElementTheme Theme { get; set; } = ElementTheme.Default;
+
+    public async Task InitializeAsync()
     {
-        private const string SettingsKey = "AppBackgroundRequestedTheme";
+        Theme = await LoadThemeFromSettingsAsync();
+        await Task.CompletedTask;
+    }
 
-        public ElementTheme Theme { get; set; } = ElementTheme.Default;
+    public async Task SetThemeAsync(ElementTheme theme)
+    {
+        Theme = theme;
 
-        public async Task InitializeAsync()
+        await SetRequestedThemeAsync();
+        await SaveThemeInSettingsAsync(Theme);
+    }
+
+    public async Task SetRequestedThemeAsync()
+    {
+        if (App.m_window.Content is FrameworkElement rootElement)
         {
-            Theme = await LoadThemeFromSettingsAsync();
-            await Task.CompletedTask;
+            rootElement.RequestedTheme = Theme;
         }
 
-        public async Task SetThemeAsync(ElementTheme theme)
-        {
-            Theme = theme;
+        await Task.CompletedTask;
+    }
 
-            await SetRequestedThemeAsync();
-            await SaveThemeInSettingsAsync(Theme);
+    private async Task<ElementTheme> LoadThemeFromSettingsAsync()
+    {
+        ElementTheme cacheTheme = ElementTheme.Default;
+        string themeName = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SettingsKey);
+
+        if (!string.IsNullOrEmpty(themeName))
+        {
+            Enum.TryParse(themeName, out cacheTheme);
         }
 
-        public async Task SetRequestedThemeAsync()
-        {
-            if (App.m_window.Content is FrameworkElement rootElement)
-            {
-                rootElement.RequestedTheme = Theme;
-            }
+        return cacheTheme;
+    }
 
-            await Task.CompletedTask;
-        }
-
-        private async Task<ElementTheme> LoadThemeFromSettingsAsync()
-        {
-            ElementTheme cacheTheme = ElementTheme.Default;
-            string themeName = await ApplicationData.Current.LocalSettings.ReadAsync<string>(SettingsKey);
-
-            if (!string.IsNullOrEmpty(themeName))
-            {
-                Enum.TryParse(themeName, out cacheTheme);
-            }
-
-            return cacheTheme;
-        }
-
-        private async Task SaveThemeInSettingsAsync(ElementTheme theme)
-        {
-            await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, theme.ToString());
-        }
+    private async Task SaveThemeInSettingsAsync(ElementTheme theme)
+    {
+        await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, theme.ToString());
     }
 }

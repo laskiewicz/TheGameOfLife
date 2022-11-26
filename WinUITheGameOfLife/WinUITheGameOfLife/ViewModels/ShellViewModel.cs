@@ -1,13 +1,11 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using WinUITheGameOfLife.Views;
 
-namespace WinUITheGameOfLife.ViewModels
+namespace WinUITheGameOfLife.ViewModels;
+
+public class ShellViewModel : ObservableRecipient
 {
-    public class ShellViewModel : ObservableRecipient
+    public ShellViewModel()
     {
-        public ShellViewModel()
-        {
-        }
     }
 }
